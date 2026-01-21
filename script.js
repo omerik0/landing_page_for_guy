@@ -31,7 +31,7 @@ document.getElementById('trainerForm').addEventListener('submit', function(e) {
         body: new URLSearchParams(formData).toString(),
     })
     .then(() => {
-        document.getElementById('trainerForm').style.display = 'none';
+        myForm.style.display = 'none';
         document.getElementById('success-msg').style.display = 'block';
     })
     .catch((error) => alert(error));

@@ -24,12 +24,17 @@
         <div class="contact-container reveal">
             <h2>דברו עם גיא</h2>
             <form id="trainerForm" data-netlify="true" name="contact-guy">
+                <!-- Hidden input חובה ל-Netlify -->
+                <input type="hidden" name="form-name" value="contact-guy" />
+                
                 <input type="text" name="full-name" id="userName" placeholder="שם מלא" required>
                 <input type="tel" name="phone" id="userPhone" placeholder="טלפון" required>
                 <textarea name="message" id="userMsg" rows="4" placeholder="איך גיא יכול לעזור לך?"></textarea>
                 <button type="submit" id="submit-btn">שלח הודעה</button>
             </form>
-            <div id="success-msg" style="display:none; color: #d4af37; margin-top: 20px; font-weight: bold;">ההודעה נשלחה! גיא יחזור אליך בקרוב. 🔥</div>
+            <div id="success-msg" style="display:none; color: #d4af37; margin-top: 20px; font-weight: bold;">
+                ההודעה נשלחה! גיא יחזור אליך בקרוב. 🔥
+            </div>
         </div>
     </section>
 
