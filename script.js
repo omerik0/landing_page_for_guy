@@ -1,38 +1,60 @@
-// 1. גלילה חלקה
-document.getElementById('main-cta').addEventListener('click', function() {
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+// שנה בפוטר
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// גלילה לטופס
+const cta = document.getElementById("main-cta");
+cta?.addEventListener("click", () => {
+  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 });
 
-// 2. אנימציות חשיפה בגלילה
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
+// Reveal on scroll
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) e.target.classList.add("active");
     });
-}, { threshold: 0.1 });
+  },
+  { threshold: 0.12 }
+);
 
-document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-// 3. טיפול בטופס
-document.getElementById('trainerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const myForm = e.target;
-    const formData = new FormData(myForm);
-    const btn = document.getElementById('submit-btn');
-    
-    btn.innerText = "שולח...";
-    btn.disabled = true;
+// שליחת טופס ל-Netlify
+const form = document.getElementById("trainerForm");
+form?.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-    })
-    .then(() => {
-        myForm.style.display = 'none';
-        document.getElementById('success-msg').style.display = 'block';
-    })
-    .catch((error) => alert(error));
+  const btn = document.getElementById("submit-btn");
+  const success = document.getElementById("success-msg");
+  const error = document.getElementById("error-msg");
+
+  success.style.display = "none";
+  error.style.display = "none";
+
+  btn.textContent = "שולח...";
+  btn.disabled = true;
+
+  // ניקוי טלפון לתווים מספריים בלבד
+  const phone = document.getElementById("userPhone");
+  if (phone) phone.value = phone.value.replace(/[^\d]/g, "");
+
+  const data = new FormData(form);
+
+  try {
+    const res = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+    });
+
+    if (!res.ok) throw new Error("Bad response");
+
+    form.reset();
+    success.style.display = "block";
+  } catch {
+    error.style.display = "block";
+  } finally {
+    btn.textContent = "שלח";
+    btn.disabled = false;
+  }
 });

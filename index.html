@@ -1,43 +1,107 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>גיא גוזלנד | מאמן כושר אישי</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>גיא גוזלנד | מאמן כושר אישי</title>
+  <meta name="description" content="מאמן כושר מוסמך מטעם וינגייט | אימונים אישיים | אימוני ילדים | רצועות | קבוצות" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <header>
-        <h1 class="reveal">גיא גוזלנד</h1>
-        <p class="reveal">אימון אישי ברמה אחרת</p>
-        <button id="main-cta" class="cta-btn reveal">בוא נתחיל</button>
-    </header>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-content reveal">
+        <div class="pill">מאמן כושר מוסמך מטעם וינגייט</div>
 
-    <section id="about" class="reveal">
-        <div class="container">
-            <h2>קצת עליי</h2>
-            <p>אני גיא סאחי בלטה לרוב אך עם דעות פוליטיות רלוונטיות וחלש מאוד בפוצי מעבר לזה אוהד שרוף של מכבי תל אביב</p>
+        <h1>גיא גוזלנד</h1>
+
+        <p class="subtitle">
+          אימונים אישיים | אימוני ילדים | רצועות | קבוצות
+        </p>
+
+        <p class="text">
+          אני מאמין באימונים חכמים ופשוטים שעובדים. בלי טרנדים ובלי הבטחות ריקות – רק תהליך מדויק שמבוסס על ידע מקצועי,
+          עומסים נכונים והתאמה אישית אמיתית לכל מתאמן.
+        </p>
+
+        <p class="text">
+          עברתי בעצמי שינוי פיזי משמעותי, ואני יודע מה זה להתחיל מאפס, להתמיד ולראות תוצאות.
+          אני עובד בגובה העיניים אבל עם סטנדרט גבוה – בונים כוח אמיתי, משפרים נראות וביצועים,
+          ומייצרים תהליך שנשמר לאורך זמן.
+        </p>
+
+        <div class="cta-row">
+          <button id="main-cta" class="btn btn-primary">השאר פרטים</button>
+          <a class="btn btn-ghost" href="tel:+972500000000">שיחה מהירה</a>
         </div>
+
+        <p class="note">
+          אם אתה רוצה תהליך רציני עם ליווי מקצועי ותוצאות מדידות – תשאיר פרטים ונתחיל לעבוד.
+        </p>
+      </div>
+
+      <div class="hero-image reveal">
+        <img src="sources/guy_img.jpeg" alt="גיא גוזלנד" loading="lazy" />
+      </div>
     </section>
 
-    <section id="contact">
-        <div class="contact-container reveal">
-            <h2>דברו עם גיא</h2>
-            <form id="trainerForm" data-netlify="true" name="contact-guy">
-                <!-- Hidden input חובה ל-Netlify -->
-                <input type="hidden" name="form-name" value="contact-guy" />
-                
-                <input type="text" name="full-name" id="userName" placeholder="שם מלא" required>
-                <input type="tel" name="phone" id="userPhone" placeholder="טלפון" required>
-                <textarea name="message" id="userMsg" rows="4" placeholder="איך גיא יכול לעזור לך?"></textarea>
-                <button type="submit" id="submit-btn">שלח הודעה</button>
-            </form>
-            <div id="success-msg" style="display:none; color: #d4af37; margin-top: 20px; font-weight: bold;">
-                ההודעה נשלחה! גיא יחזור אליך בקרוב. 🔥
-            </div>
-        </div>
+    <section id="contact" class="contact">
+      <div class="contact-card reveal">
+        <h2>השארת פרטים</h2>
+
+        <form id="trainerForm" name="contact-guy" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact-guy" />
+          <p class="hidden">
+            <label>אל תמלא: <input name="bot-field" /></label>
+          </p>
+
+          <label class="field">
+            <span>שם מלא</span>
+            <input type="text" name="full-name" placeholder="שם מלא" required />
+          </label>
+
+          <label class="field">
+            <span>טלפון</span>
+            <input type="tel" name="phone" id="userPhone" placeholder="05XXXXXXXX" required />
+          </label>
+
+          <label class="field">
+            <span>הודעה (אופציונלי)</span>
+            <textarea name="message" rows="4" placeholder="איך גיא יכול לעזור לך?"></textarea>
+          </label>
+
+          <button type="submit" id="submit-btn" class="btn btn-primary full">שלח</button>
+
+          <div id="success-msg" class="success" style="display:none;">
+            ההודעה נשלחה! גיא יחזור אליך בקרוב. ✅
+          </div>
+
+          <div id="error-msg" class="error" style="display:none;">
+            משהו לא עבד. נסה שוב עוד רגע.
+          </div>
+        </form>
+      </div>
     </section>
 
-    <script src="script.js"></script>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="copy">© <span id="year"></span> גיא גוזלנד</div>
+
+      <a class="insta" href="https://www.instagram.com/guy_gozland/" target="_blank" rel="noopener" aria-label="Instagram">
+        <span class="insta-icon" aria-hidden="true">
+          <!-- Instagram SVG -->
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.5 2.75h9A4.75 4.75 0 0 1 21.25 7.5v9A4.75 4.75 0 0 1 16.5 21.25h-9A4.75 4.75 0 0 1 2.75 16.5v-9A4.75 4.75 0 0 1 7.5 2.75Z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 16.1a4.1 4.1 0 1 0 0-8.2 4.1 4.1 0 0 0 0 8.2Z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M17.2 6.9h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
